@@ -1,11 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/navigationbar.css">
+    <link rel="stylesheet" href="../css/todolist.css">
+    <link rel="icon" href="../images/book.png">
     <title>ToDoList Page</title>
 </head>
+
 <body>
-    
+    <header class="header">
+        <div class="branding">
+            <h1 class="logo">
+                <a href="todolist.html">
+                    BookBack
+                </a>
+            </h1>
+        </div>
+
+        <nav>
+            <ul>
+                <li id="todolist">
+                    <img src="../images/todolist.png" alt="todolist_menu">
+                    <a href="todolist.html">ToDoList</a>
+                </li>
+                <li id="timer">
+                    <img src="../images/timer.png" alt="timer_menu">
+                    <a href="timer.html">Timer</a>
+                </li>
+                <li id="quicknote">
+                    <img src="../images/note.png" alt="note_menu">
+                    <a href="quicknote.html">Quicknote</a>
+                </li>
+                <li id="menu">
+                    <img src="../images/menus.png" alt="menu_menu">
+                    <a href="menu.html">Menu</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <aside>
+            <figure>
+                <img src="../images/charecter.png" alt="Character">
+                <figcaption>Level 5</figcaption>
+            </figure>
+
+            <section aria-labelledby="status-title">
+                <h2 id="status-title">Status</h2>
+
+                <div class="status">
+                    <label for="health">Health</label>
+                    <progress id="health" value="50" max="50"></progress>
+                    <span>50 / 50</span>
+
+                    <label for="exp">Experience</label>
+                    <progress id="exp" value="8" max="100"></progress>
+                    <span>8 / 100</span>
+                </div>
+            </section>
+        </aside>
+
+        <section aria-labelledby="quests-title">
+            <h2 id="quests-title">Quests</h2>
+            <ul>
+                <li>
+                    <label>
+                        <input type="checkbox"> Defeat 5 monsters
+                    </label>
+                </li>
+            </ul>
+        </section>
+    </main>
+
 </body>
+
 </html>

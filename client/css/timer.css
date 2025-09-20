@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    height: 100vh;
+    background-color: #1C1C1C;
+}
+
+header nav ul li#timer a {
+    color: #9D52FF;
+    border-bottom: 3px solid #9D52FF;
+}
+
+header nav ul li img {
+    display: none;
+}

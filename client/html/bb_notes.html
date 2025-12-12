@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookBack - Notes</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="..\css\style.css">
+    <link rel="stylesheet" href="..\css\dashboard.css">  <link rel="stylesheet" href="..\css\notes.css"> </head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">BOOKBACK</div>
+        <nav class="nav-links">
+            <a href="bb_dashboard.html"><i class="fas fa-list"></i> Task</a>
+            <a href="#" class="active"><i class="fas fa-pen"></i> Notes</a>
+            <a href="bb_timer.html"><i class="fas fa-clock"></i> Timer</a>
+            <a href="bb_login.html" class="logout-btn"><i class="fas fa-sign-out-alt"></i></a>
+        </nav>
+    </header>
+
+    <main class="dashboard-container">
+        
+        <aside class="sidebar">
+            
+            <article class="card profile-card">
+                <div class="profile-header">
+                    <div class="profile-info">
+                        <h2>Name : <span style="font-weight: normal;">placeholder</span></h2>
+                        <p class="level">Level 1</p>
+                        <p class="rank">Rank <span class="rank-number">1</span> : <span class="rank-name">Infant</span></p>
+                    </div>
+                    
+                    <figure class="avatar">
+                        <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=vivi" alt="User Avatar">
+                        <span class="badge">1</span>
+                    </figure>
+                </div> <div class="exp-container">
+                    <div class="exp-label">
+                        <span style="white-space: nowrap;">Experience :</span>
+                        <span style="white-space: nowrap;">0/100 XP</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </article>
+
+            <div class="stats-row">
+                <article class="card stat-box">
+                    <div class="icon-circle fire"><i class="fas fa-fire"></i></div>
+                    <span class="stat-value">0</span>
+                </article>
+                <article class="card stat-box">
+                    <div class="icon-circle check"><i class="fas fa-check"></i></div>
+                    <span class="stat-value">0</span>
+                </article>
+            </div>
+
+            <section class="card achievements">
+                <h3><i class="fas fa-medal"></i> Achievement</h3>
+                <div class="achievement-item" id="ach-first-step">
+                    <div class="ach-icon"><i class="fas fa-star"></i></div>
+                    <div class="ach-info">
+                        <h4>First Step</h4>
+                        <p>Complete your first task</p>
+                    </div>
+                </div>
+                <div class="achievement-item" id="ach-king">
+                    <div class="ach-icon"><i class="fas fa-crown"></i></div>
+                    <div class="ach-info">
+                        <div class="ach-header">
+                            <h4>King</h4>
+                            <span class="king-progress-text">1/5</span>
+                        </div>
+                        <p>Reach level 5</p>
+                        <div class="mini-progress">
+                            <div class="mini-fill king-progress-bar" style="width: 10%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </aside>
+
+        <section class="main-content">
+            <div class="card notes-panel"> <div class="notes-header">
+                    <h3><i class="fas fa-pen"></i> Notes</h3>
+                    <button id="add-note-btn" class="new-note-btn">
+                        <i class="fas fa-plus"></i> New Note
+                    </button>
+                </div>
+
+                <div id="note-form-container" class="note-form-container hidden">
+                    <div class="note-input-card">
+                        <input type="text" id="note-title" placeholder="Title" class="input-title">
+                        <textarea id="note-content" placeholder="Take a note..." class="input-content"></textarea>
+                        <div class="form-actions">
+                            <button id="cancel-note-btn" class="btn-cancel">Cancel</button>
+                            <button id="save-note-btn" class="btn-save">Save</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notes-list" id="notes-grid">
+                    </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="../js/notes.js"></script>
+</body>
+</html>

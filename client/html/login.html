@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/navigationbar.css">
-    <link rel="stylesheet" href="../css/login.css">
-    <link rel="icon" href="../images/book.png">
+    <title>BookBack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="../css/popup.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
-    <title>Login Page</title>
+    <link rel="stylesheet" href="..\css\style.css">
 </head>
+
 <body>
     <header class="logo">
         BOOKBACK
@@ -17,32 +20,48 @@
     <main class="container">
         <section class="info">
             <h1>Welcome to BOOKBACK</h1>
-            <p>Level up your life with BookBack. BookBack transforms productivity into a journey of growth. It combines a To-Do List, Note, and Timer system into one simple platform that rewards your consistency. Each task you complete gives you EXP based on its difficulty — Easy, Medium, or Hard — and as you progress, your character visually grows too, evolving from a baby into a teenager, and eventually into an adult. BookBack isn't just about getting things done — it's about watching your progress come to life. Every completed task is a step toward becoming the best version of yourself.</p>
+            <p>Level up your life with BookBack. BookBack transforms productivity into a journey of growth. It combines
+                a To-Do List, Note, and Timer system into one simple platform that rewards your consistency. Each task
+                you complete gives you EXP based on its difficulty — Easy, Medium, or Hard — and as you progress, your
+                character visually grows too, evolving from a baby into a teenager, and eventually into an adult.
+                BookBack isn't just about getting things done — it's about watching your progress come to life. Every
+                completed task is a step toward becoming the best version of yourself.</p>
         </section>
-    <section class="login">
-        <h2>Sign In</h2>
-        <p class="subtitle">Member Signin</p>
+        <section class="login">
+            <h2>Sign In</h2>
+            <p class="subtitle">Member Signin</p>
 
-        <form action="/login" method="post">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username">
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password">
-            </div>
-            <div class="option">
-                <div class="remember-me">
-                    <input type="checkbox" id="remember" name="remember">
-                    <label for="remember">Remember Me</label>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username">
                 </div>
-                
-                <a href="bb_register.html" class="signup-link">Sign up</a>
-            </div>
-            <button type="submit" class="signin-button">Sign in</button>
-        </form>
-    </section>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password">
+                </div>
+                <div class="option">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Remember Me</label>
+                    </div>
+
+                    <a href="register.html" class="signup-link">Sign up</a>
+                </div>
+                <button type="submit" class="signin-button">Sign in</button>
+            </form>
+        </section>
     </main>
+
+    <dialog id="popup-overlay">
+        <article class="popup">
+            <h3 id="popup-title"></h3>
+            <p id="popup-message"></p>
+            <button id="popup-btn">OK</button>
+        </article>
+    </dialog>
+
+    <script src="../js/login.js" defer></script
 </body>
+
 </html>

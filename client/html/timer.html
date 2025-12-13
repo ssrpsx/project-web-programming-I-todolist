@@ -3,44 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/navigationbar.css">
-    <link rel="stylesheet" href="../css/timer.css">
-    <link rel="icon" href="../images/book.png">
-    <title>Timer Page</title>
-</head>
+    <title>BookBack - Timer</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css"> <link rel="stylesheet" href="../css/timer.css">     </head>
 <body>
-    <header class="header">
-        <div class="branding">
-            <h1 class="logo">
-                <a href="todolist.html">
-                    BookBack
-                </a>
-            </h1>
-        </div>
 
-        <nav>
-            <ul>
-                <li id="todolist">
-                    <img src="../images/todolist.png" alt="">
-                    <a href="todolist.html">ToDoList</a>
-                </li>
-                <li id="timer">
-                    <img src="../images/timer.png" alt="">
-                    <a href="timer.html">Timer</a>
-                </li>
-                <li id="quicknote">
-                    <img src="../images/note.png" alt="">
-                    <a href="quicknote.html">Quicknote</a>
-                </li>
-                <li id="menu">
-                    <img src="../images/menus.png" alt="">
-                    <a href="menu.html">Menu</a>
-                </li>
-            </ul>
+    <header class="navbar">
+        <div class="logo">BOOKBACK</div>
+        <nav class="nav-links">
+            <a href="dashboard.html"><i class="fas fa-list"></i> Task</a>
+            <a href="notes.html"><i class="fas fa-pen"></i> Notes</a>
+            <a href="#" class="active"><i class="fas fa-clock"></i> Timer</a>
+            <a href="login.html" class="logout-btn" id="logout"><i class="fas fa-sign-out-alt"></i></a>
         </nav>
     </header>
-    <main>
-        <h1>1</h1>
+
+    <main class="dashboard-container">
+        
+        <aside class="sidebar">
+            <article class="card profile-card">
+                <div class="profile-header">
+                    <div class="profile-info">
+                        <h2>Name : <span style="font-weight: normal;">placeholder</span></h2>
+                        <p class="level">Level 1</p>
+                        <p class="rank">Rank <span class="rank-number">1</span> : <span class="rank-name">Infant</span></p>
+                    </div>
+                    <figure class="avatar">
+                        <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=vivi" alt="User Avatar">
+                        <span class="badge">1</span>
+                    </figure>
+                </div>
+                <div class="exp-container">
+                    <div class="exp-label">
+                        <span>Experience :</span>
+                        <span>0/100 XP</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </article>
+
+            <div class="stats-row">
+                <article class="card stat-box">
+                    <div class="icon-circle fire"><i class="fas fa-fire"></i></div>
+                    <span class="stat-value">0</span>
+                </article>
+                <article class="card stat-box">
+                    <div class="icon-circle check"><i class="fas fa-check"></i></div>
+                    <span class="stat-value">0</span>
+                </article>
+            </div>
+
+            <section class="card achievements">
+                <h3><i class="fas fa-medal"></i> Achievement</h3>
+                <div class="achievement-item" id="ach-first-step">
+                    <div class="ach-icon"><i class="fas fa-star"></i></div>
+                    <div class="ach-info">
+                        <h4>First Step</h4>
+                        <p>Complete your first task</p>
+                    </div>
+                </div>
+                <div class="achievement-item" id="ach-king">
+                    <div class="ach-icon"><i class="fas fa-crown"></i></div>
+                    <div class="ach-info">
+                        <div class="ach-header">
+                            <h4>King</h4>
+                            <span class="king-progress-text">1/5</span>
+                        </div>
+                        <p>Reach level 5</p>
+                        <div class="mini-progress">
+                            <div class="mini-fill king-progress-bar" style="width: 10%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </aside>
+
+    <section class="main-content">
+        <div class="card timer-panel">
+        
+            <div class="timer-header">
+                <button id="settings-btn" class="icon-btn-settings"><i class="fas fa-cog"></i></button>
+            </div>
+
+            <div id="settings-modal" class="modal hidden">
+                <div class="modal-content">
+                    <h3>Timer Settings</h3>
+                    <div class="setting-row">
+                        <label>Work (min):</label>
+                        <input type="number" id="work-input" value="25" min="1">
+                    </div>
+                    <div class="setting-row">
+                        <label>Short Break (min):</label>
+                        <input type="number" id="short-input" value="5" min="1">
+                    </div>
+                    <div class="setting-row">
+                        <label>Long Break (min):</label>
+                        <input type="number" id="long-input" value="15" min="1">
+                    </div>
+                    <div class="modal-actions">
+                        <button id="save-settings-btn" class="main-btn small">Save</button>
+                        <button id="close-settings-btn" class="btn-cancel">Cancel</button>
+                    </div>
+                </div>
+        </div>
+
+        <div class="timer-tabs">
+            <button class="tab-btn active" id="work-btn" onclick="switchMode('work')">Work</button>
+            <button class="tab-btn" id="short-break-btn" onclick="switchMode('shortBreak')">Short Break</button>
+            <button class="tab-btn" id="long-break-btn" onclick="switchMode('longBreak')">Long Break</button>
+        </div>
+
+        <div class="timer-circle">
+            <svg class="progress-ring" width="300" height="300">
+                <circle class="progress-ring__circle-bg" stroke="#1e2538" stroke-width="12" fill="transparent" r="135" cx="150" cy="150"/>
+                <circle class="progress-ring__circle" stroke="#ffffff" stroke-width="12" fill="transparent" r="135" cx="150" cy="150"/>
+            </svg>
+            <div class="time-display" id="time-display">25:00</div>
+        </div>
+
+        <div class="pomo-cycle-container">
+            <span class="cycle-label">Cycle Progress:</span>
+            <div class="pomo-hearts" id="pomo-hearts">
+                <i class="far fa-heart"></i><i class="far fa-heart"></i><i class="far fa-heart"></i><i class="far fa-heart"></i>
+            </div>
+        </div>
+
+        <div class="timer-controls-area">
+            <p class="pomodoro-count"><i class="fas fa-check-circle"></i> <span id="pomo-count">0</span> Pomodoros completed today</p>
+            <div class="control-buttons">
+                <button id="start-btn" class="main-btn"><i class="fas fa-play"></i> Start</button>
+                <button id="reset-btn" class="icon-btn-refresh"><i class="fas fa-redo-alt"></i></button>
+            </div>
+            <p class="reward-text">Complete a Pomodoro to earn +30XP !</p>
+        </div>
+
+    </div>
+    </section>
+
     </main>
+    <script src="../js/timer.js"></script>
+    <script src="../js/logout.js"></script>
 </body>
 </html>

@@ -1,14 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/navigationbar.css">
-    <link rel="stylesheet" href="../css/register.css">
-    <link rel="icon" href="../images/book.png">
-    <title>Register Page</title>
+    <title>BookBack - Register</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/popup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    
+    <header class="logo">
+        BOOKBACK
+    </header>
+
+    <main class="container">
+        <section class="info">
+            <h1>Welcome to BOOKBACK</h1>
+            <p>Level up your life with BookBack. BookBack transforms productivity into a journey of growth. It combines
+                a To-Do List, Note, and Timer system into one simple platform that rewards your consistency. Each task
+                you complete gives you EXP based on its difficulty — Easy, Medium, or Hard — and as you progress, your
+                character visually grows too, evolving from a baby into a teenager, and eventually into an adult.
+                BookBack isn't just about getting things done — it's about watching your progress come to life. Every
+                completed task is a step toward becoming the best version of yourself.</p>
+        </section>
+
+        <section class="login">
+            <h2>Sign Up</h2>
+            <p class="subtitle">Guest register</p>
+
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password">
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword">
+                </div>
+
+                <div class="option" id="register">
+                    <a href="login.html" class="login-link">Sign in</a>
+                </div>
+
+                <button type="submit" class="signin-button">Sign Up</button>
+            </form>
+        </section>
+    </main>
+
+    <dialog id="popup-overlay">
+        <article class="popup">
+            <h3 id="popup-title"></h3>
+            <p id="popup-message"></p>
+            <button id="popup-btn">OK</button>
+        </article>
+    </dialog>
+
+
+    <script src="../js/register.js" defer></script>
 </body>
+
 </html>

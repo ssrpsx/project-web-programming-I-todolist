@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookBack - Dashboard</title>
+    <title>BookBack - Notes</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="..\css\style.css">
-    <link rel="stylesheet" href="..\css\dashboard.css"> 
-</head>
+    <link rel="stylesheet" href="..\css\dashboard.css">  <link rel="stylesheet" href="..\css\notes.css"> </head>
 <body>
 
     <header class="navbar">
         <div class="logo">BOOKBACK</div>
         <nav class="nav-links">
-            <a href="#" class="active"><i class="fas fa-list"></i> Task</a>
-            <a href="bb_notes.html"><i class="fas fa-pen"></i> Notes</a>
-            <a href="bb_timer.html"><i class="fas fa-clock"></i> Timer</a>
-            <a href="bb_login.html" class="logout-btn"><i class="fas fa-sign-out-alt"></i></a>
+            <a href="dashboard.html"><i class="fas fa-list"></i> Task</a>
+            <a href="#" class="active"><i class="fas fa-pen"></i> Notes</a>
+            <a href="timer.html"><i class="fas fa-clock"></i> Timer</a>
+            <a href="login.html" class="logout-btn" id="logout"><i class="fas fa-sign-out-alt"></i></a>
         </nav>
     </header>
 
@@ -40,15 +39,13 @@
                         <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=vivi" alt="User Avatar">
                         <span class="badge">1</span>
                     </figure>
-                </div>
-
-                <div class="exp-container">
+                </div> <div class="exp-container">
                     <div class="exp-label">
-                        <span>Experience :</span>
-                        <span>0/100 XP</span>
+                        <span style="white-space: nowrap;">Experience :</span>
+                        <span style="white-space: nowrap;">0/100 XP</span>
                     </div>
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 40%;"></div>
+                        <div class="progress-fill" style="width: 0%;"></div>
                     </div>
                 </div>
             </article>
@@ -66,7 +63,6 @@
 
             <section class="card achievements">
                 <h3><i class="fas fa-medal"></i> Achievement</h3>
-                
                 <div class="achievement-item" id="ach-first-step">
                     <div class="ach-icon"><i class="fas fa-star"></i></div>
                     <div class="ach-info">
@@ -74,7 +70,6 @@
                         <p>Complete your first task</p>
                     </div>
                 </div>
-
                 <div class="achievement-item" id="ach-king">
                     <div class="ach-icon"><i class="fas fa-crown"></i></div>
                     <div class="ach-info">
@@ -92,58 +87,33 @@
         </aside>
 
         <section class="main-content">
-            <div class="card task-panel">
-                <h3><i class="fas fa-list-ul"></i> Task List</h3>
+            <div class="card notes-panel"> <div class="notes-header">
+                    <h3><i class="fas fa-pen"></i> Notes</h3>
+                    <button id="add-note-btn" class="new-note-btn">
+                        <i class="fas fa-plus"></i> New Note
+                    </button>
+                </div>
 
-                <form class="task-input-group">
-                    <input type="text" placeholder="Add a new task...." class="task-input">
-                    <select class="difficulty-select">
-                        <option value="easy">Easy (10xp)</option>
-                        <option value="medium" selected>Medium (25xp)</option>
-                        <option value="hard">Hard (50xp)</option>
-                    </select>
-                    <button type="submit" class="add-btn"><i class="fas fa-plus"></i></button>
-                </form>
-
-                <ul class="task-list">
-                    <li class="task-item">
-                    <div class="task-left">
-                        <label class="checkbox-container">
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                        <span class="task-name">Buy groceries</span>
-                    </div>
-
-                    <div class="task-right">
-                        <div class="xp-display">
-                            <i class="fas fa-certificate xp-icon medium"></i> <span class="xp-amount">+25XP</span>
+                <div id="note-form-container" class="note-form-container hidden">
+                    <div class="note-input-card">
+                        <input type="text" id="note-title" placeholder="Title" class="input-title">
+                        <textarea id="note-content" placeholder="Take a note..." class="input-content"></textarea>
+                        <div class="form-actions">
+                            <button id="cancel-note-btn" class="btn-cancel">Cancel</button>
+                            <button id="save-note-btn" class="btn-save">Save</button>
                         </div>
-                        <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
                     </div>
-                    </li>
+                </div>
 
-                    <li class="task-item">
-                    <div class="task-left">
-                        <label class="checkbox-container">
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                        <span class="task-name">Finish Webpro</span>
+                <div class="notes-list" id="notes-grid">
                     </div>
 
-                    <div class="task-right">
-                        <div class="xp-display">
-                            <i class="fas fa-certificate xp-icon hard"></i> <span class="xp-amount">+50XP</span>
-                        </div>
-                        <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                    </li>
-                </ul>
             </div>
         </section>
 
     </main>
-    <script src="../js/script.js"></script>
+
+    <script src="../js/notes.js"></script>
+    <script src="../js/logout.js"></script>
 </body>
 </html>

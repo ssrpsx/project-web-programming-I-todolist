@@ -80,6 +80,10 @@ header {
     font-size: 14px;
 }
 
+.option#register {
+    justify-content: right;
+}
+
 .remember-me {
     display: flex;
     align-items: center;

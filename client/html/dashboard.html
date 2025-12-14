@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookBack - Dashboard</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="..\css\style.css">
-    <link rel="stylesheet" href="..\css\dashboard.css"> 
+    <link rel="stylesheet" href="..\css\dashboard.css">
 </head>
+
 <body>
 
     <header class="navbar">
@@ -25,30 +27,31 @@
     </header>
 
     <main class="dashboard-container">
-        
+
         <aside class="sidebar">
-            
+
             <article class="card profile-card">
                 <div class="profile-header">
                     <div class="profile-info">
-                        <h2>Name : <span style="font-weight: normal;">placeholder</span></h2>
-                        <p class="level">Level 1</p>
-                        <p class="rank">Rank <span class="rank-number">1</span> : <span class="rank-name">Infant</span></p>
+                        <h2>Name : <span style="font-weight: normal;" id="Username">placeholder</span></h2>
+                        <p class="level" id="user-level">Level 1</p>
+                        <p class="rank">Rank <span class="rank-number" id="rank-number">1</span> : <span
+                                class="rank-name" id="rank-name">Infant</span></p>
                     </div>
-                    
+
                     <figure class="avatar">
                         <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=vivi" alt="User Avatar">
-                        <span class="badge">1</span>
+                        <span class="badge" id="logo-level">1</span>
                     </figure>
                 </div>
 
                 <div class="exp-container">
                     <div class="exp-label">
-                        <span>Experience :</span>
-                        <span>0/100 XP</span>
+                        <p>Experience :</p>
+                        <p id="user-exp">0/1000 XP</p>
                     </div>
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 40%;"></div>
+                        <div class="progress-fill" id="progress-fill" style="width: 40%;"></div>
                     </div>
                 </div>
             </article>
@@ -66,7 +69,7 @@
 
             <section class="card achievements">
                 <h3><i class="fas fa-medal"></i> Achievement</h3>
-                
+
                 <div class="achievement-item" id="ach-first-step">
                     <div class="ach-icon"><i class="fas fa-star"></i></div>
                     <div class="ach-info">
@@ -93,12 +96,12 @@
 
         <section class="main-content">
             <div class="card task-panel">
-                <h3><i class="fas fa-list-ul"></i> Task List</h3>
+                <h3><i class="fas fa-list-ul tasklist"></i> Task List</h3>
 
                 <form class="task-input-group">
                     <input type="text" placeholder="Add a new task...." class="task-input">
                     <select class="difficulty-select">
-                        <option value="easy">Easy (10xp)</option>
+                        <option value="easy">Easy (15xp)</option>
                         <option value="medium" selected>Medium (25xp)</option>
                         <option value="hard">Hard (50xp)</option>
                     </select>
@@ -107,45 +110,47 @@
 
                 <ul class="task-list">
                     <li class="task-item">
-                    <div class="task-left">
-                        <label class="checkbox-container">
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                        <span class="task-name">Buy groceries</span>
-                    </div>
-
-                    <div class="task-right">
-                        <div class="xp-display">
-                            <i class="fas fa-certificate xp-icon medium"></i> <span class="xp-amount">+25XP</span>
+                        <div class="task-left">
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="task-name">Buy groceries</span>
                         </div>
-                        <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
-                    </div>
+
+                        <div class="task-right">
+                            <div class="xp-display">
+                                <i class="fas fa-certificate xp-icon medium"></i> <span class="xp-amount">+25XP</span>
+                            </div>
+                            <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                        </div>
                     </li>
 
                     <li class="task-item">
-                    <div class="task-left">
-                        <label class="checkbox-container">
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                        <span class="task-name">Finish Webpro</span>
-                    </div>
-
-                    <div class="task-right">
-                        <div class="xp-display">
-                            <i class="fas fa-certificate xp-icon hard"></i> <span class="xp-amount">+50XP</span>
+                        <div class="task-left">
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="task-name">Finish Webpro</span>
                         </div>
-                        <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
-                    </div>
+
+                        <div class="task-right">
+                            <div class="xp-display">
+                                <i class="fas fa-certificate xp-icon hard"></i> <span class="xp-amount">+50XP</span>
+                            </div>
+                            <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                        </div>
                     </li>
                 </ul>
             </div>
         </section>
 
     </main>
-    <script src="../js/script.js" defer></script>
+    <!-- <script src="../js/script.js" defer></script>   -->
+    <script src="../js/loadUser.js" defer></script>
+    <script src="../js/logout.js" defer></script>
     <script src="../js/dashboard.js" defer></script>
-    <script src="../js/logout.js"></script>
 </body>
+
 </html>

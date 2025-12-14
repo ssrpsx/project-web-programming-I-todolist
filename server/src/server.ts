@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import mysql from 'mysql2/promise'
 import authRoutes from './routes/auth.js'
+import systemRoutes from './routes/system.js'
 import morgan from 'morgan';
 import cors from 'cors';
 import cookieParser from "cookie-parser";
@@ -38,7 +39,8 @@ export const db = mysql.createPool({
 
 app.use(cookieParser());
 
-app.use('/api', authRoutes);
+app.use('/api', systemRoutes);
+app.use('/api/auth/', authRoutes);
 
 app.listen(PORT, () => {
     console.log(`🚀 Server running on port ${PORT}`);

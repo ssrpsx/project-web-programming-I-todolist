@@ -1,5 +1,7 @@
 CREATE DATABASE IF NOT EXISTS Project_Webpro;
 
+DESC project_webpro;
+
 USE project_webpro;
 
 CREATE TABLE IF NOT EXISTS user (
@@ -44,3 +46,13 @@ CREATE TABLE IF NOT EXISTS Achievement (
 );
 
 SELECT * FROM Achievement;
+
+INSERT INTO user(USERNAME, PASSWORD) VALUES('admin', 'password');
+
+DELETE FROM user WHERE id = 1;
+
+SELECT * FROM user WHERE USERNAME = 'phaiz';
+
+SELECT * FROM user u LEFT JOIN achievement a ON u.ID = a.USER_ID LEFT JOIN tasks t ON u.ID = t.USER_ID WHERE u.USERNAME = 8;
+
+UPDATE user SET EXP = 20770 WHERE ID = 8;

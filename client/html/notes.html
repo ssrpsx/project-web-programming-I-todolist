@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookBack - Notes</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="..\css\style.css">
-    <link rel="stylesheet" href="..\css\dashboard.css">  <link rel="stylesheet" href="..\css\notes.css"> </head>
+    <link rel="stylesheet" href="..\css\dashboard.css">
+    <link rel="stylesheet" href="..\css\notes.css">
+</head>
+
 <body>
 
     <header class="navbar">
@@ -24,28 +28,31 @@
     </header>
 
     <main class="dashboard-container">
-        
+
         <aside class="sidebar">
-            
+
             <article class="card profile-card">
                 <div class="profile-header">
                     <div class="profile-info">
-                        <h2>Name : <span style="font-weight: normal;">placeholder</span></h2>
-                        <p class="level">Level 1</p>
-                        <p class="rank">Rank <span class="rank-number">1</span> : <span class="rank-name">Infant</span></p>
+                        <h2>Name : <span style="font-weight: normal;" id="Username">placeholder</span></h2>
+                        <p class="level" id="user-level">Level 1</p>
+                        <p class="rank">Rank <span class="rank-number" id="rank-number">1</span> : <span
+                                class="rank-name" id="rank-name">Infant</span></p>
                     </div>
-                    
+
                     <figure class="avatar">
                         <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=vivi" alt="User Avatar">
-                        <span class="badge">1</span>
+                        <span class="badge" id="logo-level">1</span>
                     </figure>
-                </div> <div class="exp-container">
+                </div>
+
+                <div class="exp-container">
                     <div class="exp-label">
-                        <span style="white-space: nowrap;">Experience :</span>
-                        <span style="white-space: nowrap;">0/100 XP</span>
+                        <p>Experience :</p>
+                        <p id="user-exp">0/1000 XP</p>
                     </div>
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%;"></div>
+                        <div class="progress-fill" id="progress-fill" style="width: 40%;"></div>
                     </div>
                 </div>
             </article>
@@ -87,7 +94,8 @@
         </aside>
 
         <section class="main-content">
-            <div class="card notes-panel"> <div class="notes-header">
+            <div class="card notes-panel">
+                <div class="notes-header">
                     <h3><i class="fas fa-pen"></i> Notes</h3>
                     <button id="add-note-btn" class="new-note-btn">
                         <i class="fas fa-plus"></i> New Note
@@ -106,14 +114,16 @@
                 </div>
 
                 <div class="notes-list" id="notes-grid">
-                    </div>
+                </div>
 
             </div>
         </section>
 
     </main>
 
-    <script src="../js/notes.js"></script>
-    <script src="../js/logout.js"></script>
+    <script src="../js/loadUser.js" defer></script>
+    <script src="../js/logout.js" defer></script>
+    <script src="../js/notes.js" defer></script>
 </body>
+
 </html>

@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 interface UserRow extends RowDataPacket {
-    id: number;
+    ID: number;
     USERNAME: string;
     PASSWORD: string;
 }
@@ -75,7 +75,7 @@ export const login = async (req: Request, res: Response) => {
         }
 
         const payload = {
-            id: user.id,
+            ID: user.ID,
             username: user.USERNAME,
         };
 

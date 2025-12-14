@@ -44,7 +44,7 @@ form.addEventListener("submit", async (e) => {
     }
 
     try {
-        const res = await fetch(`${API_BASE}/api/register`, {
+        const res = await fetch(`${API_BASE}/api/auth/register`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
@@ -60,7 +60,7 @@ form.addEventListener("submit", async (e) => {
             return;
         }
 
-        showPopup("Success", "Account created successfully!", () => {
+        showPopup("Register Success", "Account created successfully!", () => {
             window.location.href = "login.html";
         });
 

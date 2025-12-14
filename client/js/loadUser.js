@@ -32,7 +32,7 @@ async function authFetchData(url, options = {}) {
         }
     });
 
-    if (res.status === 401 || res.status === 404) {
+    if (res.status === 401 || res.status === 403) {
         localStorage.clear();
         window.location.href = "login.html";
         return;

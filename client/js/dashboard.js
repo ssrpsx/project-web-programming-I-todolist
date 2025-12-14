@@ -106,7 +106,7 @@ if (taskList) {
     taskList.addEventListener("click", async (event) => {
         const target = event.target;
         const taskItem = target.closest(".task-item");
-        if (!taskItem) return;
+        // if (!taskItem) return;
 
         const taskId = taskItem.dataset.id;
 

@@ -18,7 +18,7 @@ interface TaskRow extends RowDataPacket {
     COMPLETE: boolean;
 }
 
-export const delete_task = async (req: AuthRequest, res: Response) => {
+export const delete_task = async (req: Request, res: Response) => {
     try {
         const taskId = req.params.id;
 
@@ -28,6 +28,24 @@ export const delete_task = async (req: AuthRequest, res: Response) => {
         );
         
         return res.json({ message: "Task deleted" });
+    }
+    catch (err) {
+        res.status(500).json({ message: "Server Error" });
+    }
+};
+
+export const delete_note = async (req: Request, res: Response) => {
+    try {
+        console.log("loaded")
+
+        const id = req.params.id;
+
+        await db.query(
+            "DELETE FROM notes WHERE ID = ?",
+            [id]
+        );
+
+        return res.json({ message: "Note deleted" });
     }
     catch (err) {
         res.status(500).json({ message: "Server Error" });

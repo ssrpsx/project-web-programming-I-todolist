@@ -64,3 +64,25 @@ export const update_task = async (req: AuthRequest, res: Response) => {
         res.status(500).json({ message: "Server Error" });
     }
 };
+
+export const update_note = async (req: Request, res: Response) => {
+    try {
+        console.log("loadded")
+
+        const id = req.params.id;
+        const { TITLE, CONTENT } = req.body;
+
+        await db.query(
+            "UPDATE notes SET TITLE=?, CONTENT=? WHERE ID=?",
+            [TITLE, CONTENT, id]
+        );
+
+        return res.json({
+            message: "Note updated"
+        });
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Server Error" });
+    }
+};

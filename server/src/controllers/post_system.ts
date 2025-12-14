@@ -32,7 +32,29 @@ export const post_task = async (req: AuthRequest, res: Response) => {
             [userId, TASK, LEVEL]
         );
 
-        return res.status(201).json({ message: "Added successfully" });
+        return res.status(201).json({ message: "Task added successfully" });
+    } 
+    catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: "Server Error" });
+    }
+};
+
+export const post_note = async (req: AuthRequest, res: Response) => {
+    try {
+        if (!req.user) {
+            return res.status(401).json({ message: "Unauthorized" });
+        }
+
+        const userId = req.user.ID;
+        const { TITLE, CONTENT } = req.body;
+        
+        await db.query(
+            "INSERT INTO notes(USER_ID, TITLE, CONTENT) VALUES (?, ?, ?)",
+            [userId, TITLE, CONTENT]
+        );
+
+        return res.status(201).json({ message: "Note added successfully" });
     } 
     catch (err) {
         console.error(err);

@@ -1,4 +1,4 @@
-import type { Request, Response } from "express";
+import type { Response } from "express";
 import { db } from "../server";
 import type { RowDataPacket } from "mysql2";
 import { AuthRequest } from "../middleware/auth.js";
@@ -6,16 +6,7 @@ import { AuthRequest } from "../middleware/auth.js";
 interface UserRow extends RowDataPacket {
     ID: number;
     USERNAME: string;
-    PASSWORD: string;
     EXP: number;
-}
-
-interface TaskRow extends RowDataPacket {
-    ID: number;
-    USER_ID: number;
-    TASK: string;
-    LEVEL: string;
-    COMPLETE: boolean;
 }
 
 export const get_user = async (req: AuthRequest, res: Response) => {
@@ -26,23 +17,79 @@ export const get_user = async (req: AuthRequest, res: Response) => {
 
         const userId = req.user.ID;
 
-        const [rows] = await db.query<UserRow[]>(
-            "SELECT * FROM user WHERE ID = ?",
+        /* ---------- user ---------- */
+        const [[user]] = await db.query<UserRow[]>(
+            "SELECT USERNAME, EXP FROM user WHERE ID = ?",
             [userId]
         );
-
-        const user = rows[0];
 
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
 
+        /* ---------- correct ---------- */
+        const [[correctRow]] = await db.query<RowDataPacket[]>(
+            "SELECT COUNT(ID) AS correct FROM tasks WHERE COMPLETE = 1 AND USER_ID = ?",
+            [userId]
+        );
+
+        /* ---------- streak ---------- */
+        const [streakRows] = await db.query<RowDataPacket[]>(
+            `
+            SELECT DISTINCT DATE(updated_at) AS done_date
+            FROM tasks
+            WHERE COMPLETE = 1
+            AND DATE(updated_at) <= CURDATE()
+            AND USER_ID = ?
+            ORDER BY done_date DESC
+            `,
+            [userId]
+        );
+
+        let streak = 0;
+        let current = new Date();
+        current.setHours(0, 0, 0, 0);
+
+        for (const row of streakRows) {
+            const doneDate = new Date(row.done_date);
+            doneDate.setHours(0, 0, 0, 0);
+
+            const diff =
+                (current.getTime() - doneDate.getTime()) /
+                (1000 * 60 * 60 * 24);
+
+            if (diff === 0 || diff === 1) {
+                streak++;
+                current.setDate(current.getDate() - 1);
+            } else {
+                break;
+            }
+        }
+
+        /* ---------- achievement ---------- */
+        const [achievement] = await db.query<RowDataPacket[]>(
+            `
+            SELECT *
+            FROM achievement
+            WHERE USER_ID = ?
+            ORDER BY COMPLETE ASC, created_at ASC
+            `,
+            [userId]
+        );
+
+        /* ---------- response (format เดิม) ---------- */
         return res.status(200).json({
-            username: user.USERNAME,
-            exp: user.EXP,
+            user: {
+                username: user.USERNAME,
+                exp: user.EXP,
+            },
+            correct: correctRow.correct ?? 0,
+            streak,
+            achievement,
         });
 
-    } catch (err) {
+    }
+    catch (err) {
         console.error(err);
         res.status(500).json({ message: "Server Error" });
     }
@@ -56,7 +103,7 @@ export const get_task = async (req: AuthRequest, res: Response) => {
 
         const userId = req.user.ID;
 
-        const [rows] = await db.query<TaskRow[]>(
+        const [rows] = await db.query<RowDataPacket[]>(
             "SELECT * FROM tasks WHERE USER_ID = ?",
             [userId]
         );
@@ -66,7 +113,8 @@ export const get_task = async (req: AuthRequest, res: Response) => {
         }
 
         return res.status(200).json(rows);
-    } catch (err) {
+    }
+    catch (err) {
         console.error(err);
         res.status(500).json({ message: "Server Error" });
     }
@@ -80,7 +128,7 @@ export const get_note = async (req: AuthRequest, res: Response) => {
 
         const userId = req.user.ID;
 
-        const [rows] = await db.query<TaskRow[]>(
+        const [rows] = await db.query<RowDataPacket[]>(
             "SELECT * FROM notes WHERE USER_ID = ?",
             [userId]
         );
@@ -90,7 +138,8 @@ export const get_note = async (req: AuthRequest, res: Response) => {
         }
 
         return res.status(200).json(rows);
-    } catch (err) {
+    }
+    catch (err) {
         console.error(err);
         res.status(500).json({ message: "Server Error" });
     }

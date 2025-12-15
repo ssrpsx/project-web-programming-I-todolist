@@ -10,9 +10,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="..\css\style.css">
-    <link rel="stylesheet" href="..\css\dashboard.css">
-    <link rel="stylesheet" href="..\css\notes.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link rel="stylesheet" href="../css/notes.css">
+    <link rel="stylesheet" href="../css/popup.css">
 </head>
 
 <body>
@@ -41,7 +42,7 @@
                     </div>
 
                     <figure class="avatar">
-                        <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=vivi" alt="User Avatar">
+                        <img src="../images/Infant_profile.png" alt="User Avatar" id="image-user">
                         <span class="badge" id="logo-level">1</span>
                     </figure>
                 </div>
@@ -60,36 +61,17 @@
             <div class="stats-row">
                 <article class="card stat-box">
                     <div class="icon-circle fire"><i class="fas fa-fire"></i></div>
-                    <span class="stat-value">0</span>
+                    <span class="stat-value" id="streak-number">0</span>
                 </article>
                 <article class="card stat-box">
                     <div class="icon-circle check"><i class="fas fa-check"></i></div>
-                    <span class="stat-value">0</span>
+                    <span class="stat-value" id="correct-number">0</span>
                 </article>
             </div>
 
             <section class="card achievements">
                 <h3><i class="fas fa-medal"></i> Achievement</h3>
-                <div class="achievement-item" id="ach-first-step">
-                    <div class="ach-icon"><i class="fas fa-star"></i></div>
-                    <div class="ach-info">
-                        <h4>First Step</h4>
-                        <p>Complete your first task</p>
-                    </div>
-                </div>
-                <div class="achievement-item" id="ach-king">
-                    <div class="ach-icon"><i class="fas fa-crown"></i></div>
-                    <div class="ach-info">
-                        <div class="ach-header">
-                            <h4>King</h4>
-                            <span class="king-progress-text">1/5</span>
-                        </div>
-                        <p>Reach level 5</p>
-                        <div class="mini-progress">
-                            <div class="mini-fill king-progress-bar" style="width: 10%;"></div>
-                        </div>
-                    </div>
-                </div>
+                <div id="achievement-list"></div>
             </section>
         </aside>
 
@@ -113,13 +95,20 @@
                     </div>
                 </div>
 
-                <div class="notes-list" id="notes-grid">
-                </div>
+                <ul class="notes-list" id="notes-grid"></ul>
 
             </div>
         </section>
 
     </main>
+
+    <dialog id="popup-overlay">
+        <article class="popup">
+            <h3 id="popup-title"></h3>
+            <p id="popup-message"></p>
+            <button id="popup-btn">OK</button>
+        </article>
+    </dialog>
     
     <script src="../js/loadUser.js" defer></script>
     <script src="../js/logout.js" defer></script>

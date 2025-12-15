@@ -58,7 +58,7 @@ async function renderNotes() {
 
     if (notes) {
         notes.forEach(note => {
-            const noteEl = document.createElement("article");
+            const noteEl = document.createElement("li");
             noteEl.className = "note-item";
             noteEl.dataset.id = note.ID;
 
@@ -74,6 +74,8 @@ async function renderNotes() {
             notesGrid.appendChild(noteEl);
         });
     }
+
+    loadDataUser();
 }
 
 addNoteBtn.addEventListener("click", openForm);

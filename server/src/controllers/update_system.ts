@@ -59,7 +59,8 @@ export const update_task = async (req: AuthRequest, res: Response) => {
             expGained: expGain
         });
 
-    } catch (err) {
+    }
+    catch (err) {
         console.error(err);
         res.status(500).json({ message: "Server Error" });
     }
@@ -67,8 +68,6 @@ export const update_task = async (req: AuthRequest, res: Response) => {
 
 export const update_note = async (req: Request, res: Response) => {
     try {
-        console.log("loadded")
-
         const id = req.params.id;
         const { TITLE, CONTENT } = req.body;
 
@@ -81,8 +80,39 @@ export const update_note = async (req: Request, res: Response) => {
             message: "Note updated"
         });
 
-    } catch (err) {
+    }
+    catch (err) {
         console.error(err);
         res.status(500).json({ message: "Server Error" });
     }
 };
+
+export const update_achievement = async (req: AuthRequest, res: Response) => {
+    try {
+        if (!req.user) {
+            return res.status(401).json({ message: "Unauthorized" });
+        }
+
+        const userId = req.user.ID;
+        const { ID } = req.body;
+
+        await db.query( 
+            "UPDATE achievement SET COMPLETE = 1 WHERE ID = ?",
+            [ID]
+        );
+
+        await db.query(
+            "UPDATE user SET EXP = EXP + ? WHERE ID = ?",
+            [100, userId]
+        );
+
+        return res.json({
+            message: "achievement updated"
+        });
+    }
+
+    catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Server Error" });
+    }
+}

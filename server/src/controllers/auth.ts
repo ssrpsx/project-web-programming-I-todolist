@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
 import { db } from "../server";
-import type { RowDataPacket } from "mysql2";
+import type { RowDataPacket, ResultSetHeader } from "mysql2";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -38,7 +38,32 @@ export const register = async (req: Request, res: Response) => {
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        await db.query('INSERT INTO user(USERNAME, PASSWORD) VALUES(?, ?)', [username, hashedPassword]);
+        const [result] = await db.query<ResultSetHeader>(
+            'INSERT INTO user (USERNAME, PASSWORD) VALUES (?, ?)',
+            [username, hashedPassword]
+        );
+
+        const userId = result.insertId;
+
+        const achievements = [
+            ["On fire", "Be productive for 5 days streak!", "fa-solid fa-fire"],
+            ["Hardcore", "Finish 3 task with 'Hard' difficulty", "fa-solid fa-check"],
+            ["King", "Reach level 5", "fas fa-crown"],
+            ["Scribe", "Make 3 new notes", "fa-solid fa-note-sticky"],
+            ["Time Keeper", "Finish 1 Pomodoro session", "fa-regular fa-clock"],
+            ["High Flyer", "Reach rank Kid", "fa-solid fa-angles-up"]
+        ];
+
+        for (const [title, desc, icon] of achievements) {
+            await db.query(
+                `
+                    INSERT INTO achievement (USER_ID, TITLE, DESCRIPTION, ICON)
+                    VALUES (?, ?, ?, ?)
+                `,
+                [userId, title, desc, icon]
+            );
+        }
+
 
         res.status(200).json({ message: "Register Success!!" })
     }

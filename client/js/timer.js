@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     // ===== MODES =====
     let MODES = {
-        work: { time: 25 * 60 },
-        shortBreak: { time: 5 * 60 },
-        longBreak: { time: 15 * 60 }
+        work: { time: 0.05 * 60 },
+        shortBreak: { time: 0.05 * 60 },
+        longBreak: { time: 0.05 * 60 }
     };
 
     let currentMode = "work";
@@ -82,10 +82,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 sessionsUntilLongBreak = 4;
                 cycleCount = 0;
                 updateHearts();
-            } else {
+
+                pomodoroIsDone = true;
+                loadDataUser();
+            }
+            else {
                 switchMode("shortBreak");
             }
-        } else {
+        }
+        else {
             switchMode("work");
         }
 

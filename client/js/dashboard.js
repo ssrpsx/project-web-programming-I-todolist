@@ -1,4 +1,5 @@
 const API_Dashboard = "http://localhost:3000"
+
 const taskInput = document.querySelector('.task-input');
 const difficultySelect = document.querySelector('.difficulty-select');
 const taskForm = document.querySelector('.task-input-group');
@@ -84,53 +85,55 @@ async function postTask(taskText, difficulty) {
     console.log("Task added:", data);
 }
 
-if (taskForm) {
-    taskForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+    loadDataDashboard();
 
-        const taskText = taskInput.value.trim();
-        const difficulty = difficultySelect.value;
+    if (taskForm) {
+        taskForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
 
-        if (taskText === "") return;
+            const taskText = taskInput.value.trim();
+            const difficulty = difficultySelect.value;
 
-        await postTask(taskText, difficulty);
+            if (taskText === "") return;
 
-        taskInput.value = "";
-        taskInput.focus();
+            await postTask(taskText, difficulty);
 
-        loadDataDashboard();
-    });
-}
+            taskInput.value = "";
+            taskInput.focus();
 
-if (taskList) {
-    taskList.addEventListener("click", async (event) => {
-        const target = event.target;
-        const taskItem = target.closest(".task-item");
-        // if (!taskItem) return;
+            await loadDataDashboard();
+        });
+    }
 
-        const taskId = taskItem.dataset.id;
+    if (taskList) {
+        taskList.addEventListener("click", async (event) => {
+            const target = event.target;
+            const taskItem = target.closest(".task-item");
+            if (!taskItem) return;
 
-        if (target.closest(".delete-btn")) {
-            await authFetchData(
-                `${API_Dashboard}/api/delete_task/${taskId}`,
-                { method: "DELETE" }
-            );
+            const taskId = taskItem.dataset.id;
 
-            taskItem.style.opacity = "0";
-            taskItem.style.transform = "translateX(50px)";
-            setTimeout(() => loadDataDashboard(), 300);
-        }
+            if (target.closest(".delete-btn")) {
+                await authFetchData(
+                    `${API_Dashboard}/api/delete_task/${taskId}`,
+                    { method: "DELETE" }
+                );
 
-        if (target.matches("input[type='checkbox']")) {
-            await authFetchData(
-                `${API_Dashboard}/api/put_task/${taskId}`,
-                { method: "PUT" }
-            );
+                taskItem.style.opacity = "0";
+                taskItem.style.transform = "translateX(50px)";
+                setTimeout(() => loadDataDashboard(), 300);
+            }
 
-            loadDataDashboard();
-            loadDataUser();
-        }
-    });
-}
+            if (target.closest("input[type='checkbox']")) {
+                await authFetchData(
+                    `${API_Dashboard}/api/put_task/${taskId}`,
+                    { method: "PUT" }
+                );
 
-loadDataDashboard();
+                await loadDataDashboard();
+                await loadDataUser();
+            }
+        });
+    }
+});

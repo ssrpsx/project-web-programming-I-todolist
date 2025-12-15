@@ -21,12 +21,14 @@
 <body>
 
     <header class="navbar">
-        <div class="logo">BOOKBACK</div>
-        <nav class="nav-links">
-            <a href="#" class="active"><i class="fas fa-list"></i> Task</a>
+        <div class="logo">
+            <h1>BOOKBACK</h1><i class="fa-solid fa-bars menubar" id="btn"></i>
+        </div>
+        <nav class="nav-links" id="nav">
+            <a href="dashboard.html" class="active"><i class="fas fa-list"></i> Task</a>
             <a href="notes.html"><i class="fas fa-pen"></i> Notes</a>
             <a href="timer.html"><i class="fas fa-clock"></i> Timer</a>
-            <a href="login.html" class="logout-btn" id="logout"><i class="fas fa-sign-out-alt"></i></a>
+            <a href="login.html" class="logout-btn" id="logout"><i class="fas fa-sign-out-alt"></i> Log out</a>
         </nav>
     </header>
 
@@ -142,6 +144,7 @@
     <script src="../js/loadUser.js" defer></script>
     <script src="../js/logout.js" defer></script>
     <script src="../js/dashboard.js" defer></script>
+    <script src="../js/nav.js" defer></script>
 </body>
 
 </html>

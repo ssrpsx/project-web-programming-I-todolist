@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const sound = new Audio("../audio/clock.mp3");
+
     // ===== MODES =====
     let MODES = {
         work: { time: 0.05 * 60 },
@@ -94,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
             switchMode("work");
         }
 
+        sound.play();
         startTimer();
     }
 

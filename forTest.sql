@@ -78,7 +78,7 @@ INSERT INTO tasks (USER_ID, TASK, LEVEL, COMPLETE, created_at, updated_at) VALUE
 (10, 'Day 2 task', 'Medium', 1, CURDATE() - INTERVAL 3 DAY, CURDATE() - INTERVAL 3 DAY),
 (10, 'Day 3 task', 'Medium', 1, CURDATE() - INTERVAL 2 DAY, CURDATE() - INTERVAL 2 DAY),
 (10, 'Day 4 task', 'Hard',   1, CURDATE() - INTERVAL 1 DAY, CURDATE() - INTERVAL 1 DAY),
-(10, 'Day 5 task', 'Easy',   1, CURDATE(),                  CURDATE());
+(10, 'Day 5 task', 'Easy',   1, CURDATE(), CURDATE());
 
 INSERT INTO achievement(USER_ID, TITLE, DESCRIPTION, ICON) VALUES
 (1, "On fire", "Be productive for 5 days streak!", "fa-solid fa-fire"),

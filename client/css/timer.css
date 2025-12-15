@@ -17,7 +17,9 @@
     transition: color 0.2s;
 }
 
-.timer-header-link a:hover { color: white; }
+.timer-header-link a:hover {
+    color: white;
+}
 
 /* Tabs (Work / Short Break / Long Break) */
 .timer-tabs {
@@ -61,7 +63,8 @@
     transition: stroke-dashoffset 0.35s;
     transform: rotate(-90deg);
     transform-origin: 50% 50%;
-    stroke-dasharray: 848; /* 2 * PI * 135 ≈ 848 */
+    stroke-dasharray: 848;
+    /* 2 * PI * 135 ≈ 848 */
     stroke-dashoffset: 0;
     stroke-linecap: round;
     color: rgbargb(255, 255, 255, 0.1);
@@ -71,12 +74,16 @@
     position: absolute;
     font-size: 72px;
     font-weight: bold;
-    font-family: monospace; /* ให้ตัวเลขกว้างเท่ากัน ไม่ขยับดุ๊กดิ๊ก */
+    font-family: monospace;
+    /* ให้ตัวเลขกว้างเท่ากัน ไม่ขยับดุ๊กดิ๊ก */
     color: white;
 }
 
 /* Controls */
-.timer-controls-area { text-align: center; width: 100%; }
+.timer-controls-area {
+    text-align: center;
+    width: 100%;
+}
 
 .pomodoro-count {
     color: #7d8da1;
@@ -107,20 +114,31 @@
     text-transform: uppercase;
 }
 
-.main-btn:hover { transform: scale(1.05); }
-.main-btn:active { transform: scale(0.95); }
+.main-btn:hover {
+    transform: scale(1.05);
+}
+
+.main-btn:active {
+    transform: scale(0.95);
+}
 
 .icon-btn-refresh {
     background-color: #444b66;
     color: white;
     border: none;
-    width: 50px; height: 50px;
+    width: 50px;
+    height: 50px;
     border-radius: 10px;
     cursor: pointer;
     font-size: 18px;
-    display: flex; align-items: center; justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.icon-btn-refresh:hover { background-color: #555d7a; }
+
+.icon-btn-refresh:hover {
+    background-color: #555d7a;
+}
 
 .reward-text {
     color: #7d8da1;
@@ -133,8 +151,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 8px;/* เว้นระยะห่างจากปุ่ม Start */
-    margin-top: -10px;   /* ขยับขึ้นไปหา Timer นิดนึง */
+    gap: 8px;
+    /* เว้นระยะห่างจากปุ่ม Start */
+    margin-top: -10px;
+    /* ขยับขึ้นไปหา Timer นิดนึง */
 }
 
 .cycle-label {
@@ -147,20 +167,24 @@
 .pomo-hearts {
     display: flex;
     gap: 10px;
-    font-size: 24px; /* ขนาดหัวใจ */
+    font-size: 24px;
+    /* ขนาดหัวใจ */
 }
 
 /* หัวใจปกติ (ยังไม่เสร็จ - สีจางๆ) */
 .pomo-hearts i {
-    color: #444b66; 
+    color: #444b66;
     transition: all 0.3s ease;
 }
 
 /* หัวใจที่เสร็จแล้ว (Filled - สีชมพู/แดง) */
 .pomo-hearts i.completed {
-    color: #ffffff; /* สีชมพูแดงสดใส */
-    transform: scale(1.1); /* ขยายใหญ่ขึ้นนิดนึง */
-    text-shadow: 0 0 10px rgba(255, 107, 129, 0.5); /* ใส่เงาเรืองแสง */
+    color: #ffffff;
+    /* สีชมพูแดงสดใส */
+    transform: scale(1.1);
+    /* ขยายใหญ่ขึ้นนิดนึง */
+    text-shadow: 0 0 10px rgba(255, 107, 129, 0.5);
+    /* ใส่เงาเรืองแสง */
 }
 
 .timer-header {
@@ -183,6 +207,7 @@
     justify-content: flex-end;
     transition: color 0.2s, transform 0.2s;
 }
+
 .icon-btn-settings:hover {
     color: white;
     transform: rotate(90deg);
@@ -190,14 +215,23 @@
 
 /* --- Modal Settings Styles --- */
 .modal {
-    position: absolute; /* หรือ fixed ถ้าอยากให้ลอยเหนือทั้งหน้า */
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.7);
-    display: flex; align-items: center; justify-content: center;
-    z-index: 1000; border-radius: 22px;
+    position: absolute;
+    /* หรือ fixed ถ้าอยากให้ลอยเหนือทั้งหน้า */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    border-radius: 22px;
 }
 
-.modal.hidden { display: none; }
+.modal.hidden {
+    display: none;
+}
 
 .modal-content {
     background-color: #ffffff;
@@ -205,34 +239,48 @@
     padding: 25px;
     border-radius: 15px;
     width: 300px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.modal-content h3 { margin-top: 0; color: #1a3a7b; text-align: center; margin-bottom: 20px;}
+.modal-content h3 {
+    margin-top: 0;
+    color: #1a3a7b;
+    text-align: center;
+    margin-bottom: 20px;
+}
 
 .setting-row {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 15px; font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-weight: bold;
 }
 
 .setting-row input {
-    width: 60px; padding: 5px; border-radius: 5px;
-    border: 1px solid #ccc; text-align: center; font-size: 16px;
+    width: 60px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 16px;
 }
 
 .modal-actions {
-    display: flex; justify-content: space-between; margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
-.main-btn.small { 
-    padding: 8px 20px; 
+.main-btn.small {
+    padding: 8px 20px;
     font-size: 14px;
-    background-color: #1a3a7b; 
+    background-color: #1a3a7b;
     color: white;
 }
 
-.btn-cancel { 
-    padding: 8px 20px; 
+.btn-cancel {
+    padding: 8px 20px;
     font-size: 14px;
     border: #1a3a7b;
     box-shadow: #1e2538;
@@ -246,4 +294,6 @@
     text-transform: uppercase;
 }
 
-.btn-cancel:hover { transform: scale(1.05); }
+.btn-cancel:hover {
+    transform: scale(1.05);
+}

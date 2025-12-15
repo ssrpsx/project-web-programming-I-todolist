@@ -6,6 +6,8 @@ var level = 0;
 var exp = 0;
 var rank_index = 0;
 var pomodoroIsDone = false;
+const soundRankUp = new Audio("../audio/rankup.mp3");
+const soundLevelUp = new Audio("../audio/levelup.mp3");
 
 function isLoggedIn() {
     const token = localStorage.getItem("token");
@@ -115,6 +117,8 @@ function RankUp(oldFrames, newFrames, oldRank, newRank) {
     oldImg.src = oldFrames[0];
     newImg.src = newFrames[0];
 
+    soundRankUp.play()
+
     setTimeout(() => {
         const interval = setInterval(() => {
 
@@ -184,6 +188,8 @@ function LevelUp(frames, oldLevel, newLevel) {
     const maxLoop = 3;
 
     img.src = frames[0];
+
+    soundLevelUp.play()
 
     setTimeout(() => {
         const interval = setInterval(() => {

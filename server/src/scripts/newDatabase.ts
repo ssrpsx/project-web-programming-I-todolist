@@ -4,14 +4,29 @@ import dotenv from "dotenv";
 dotenv.config();
 
 async function createDatabase() {
-    try {
-        const connection = await mysql.createConnection({
-            host: process.env.DB_HOST,
-            user: process.env.DB_USER,
-            password: process.env.DB_PASS,
-            multipleStatements: true
-        });
+    let connection;
+    let connected = false;
+    let attempts = 10; // ลอง 10 ครั้ง
 
+    while (!connected && attempts > 0) {
+        try {
+            connection = await mysql.createConnection({
+                host: process.env.DB_HOST,
+                user: process.env.DB_USER,
+                password: process.env.DB_PASS,
+                multipleStatements: true
+            });
+            connected = true;
+        } catch (err) {
+            console.log(`Waiting for MySQL to be ready... (${attempts} attempts left)`);
+            attempts--;
+            await new Promise(res => setTimeout(res, 3000)); // รอ 3 วินาที
+        }
+    }
+
+    if (!connection) throw new Error("Could not connect to MySQL");
+
+    try {
         await connection.query(`CREATE DATABASE IF NOT EXISTS Project_Webpro`);
         console.log("✔ DATABASE 'Project' created / already exists");
 
@@ -47,7 +62,7 @@ CREATE TABLE IF NOT EXISTS notes (
     FOREIGN KEY (USER_ID) REFERENCES user(ID) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS Achievement (
+CREATE TABLE IF NOT EXISTS achievement (
 	ID INT AUTO_INCREMENT PRIMARY KEY,
     USER_ID INT NOT NULL,
     TITLE TEXT NOT NULL,

@@ -24,18 +24,26 @@ export const db = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
-    database: process.env.DB_NAME,
+    database: process.env.DB_NAME
 });
 
-(async () => {
+async function connectWithRetry(attempts = 5) {
+  while (attempts > 0) {
     try {
-        await db.query("SELECT 1");
-        console.log("✅ MySQL Connected!");
+      const connection = await db.query("SELECT 1");
+      console.log("✅ Database connected!");
+      return connection;
     }
     catch (err) {
-        console.error("❌ Database connection error:", err);
+      console.log(`❌ Connection failed, retrying... (${attempts} left)`);
+      attempts--;
+      await new Promise(res => setTimeout(res, 3000));
     }
-})();
+  }
+  throw new Error("Could not connect to DB after multiple retries");
+}
+
+connectWithRetry()
 
 app.use(cookieParser());
 

@@ -31,7 +31,7 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
-    command: sh -c "npm run init-db && npm run dev"
+    command: sh -c "npx wait-on tcp:mysql:3306 && npm run init-db && npm run dev"
 
   frontend:
     container_name: frontend

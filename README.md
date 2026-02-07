@@ -9,3 +9,34 @@ The website also includes features such as note, timer, goal-tracking system to 
 
 ## PC Showcase (Responsive Supported)
 <img src="screenshot/screenshot.gif" alt="Desktop Portfolio">
+
+## Installation With docker
+### Git clone this repo
+
+```
+Open Docker-Desktop
+```
+
+```bash
+git clone https://github.com/ssrpsx/project-web-programming-I-todolist.git
+```
+
+```bash
+cd project-web-programming-I-todolist
+```
+
+```bash
+docker compose up --build
+```
+
+```
+waiting utill to see 🚀 Server running on port 5500
+```
+
+```
+Open your browser and Search
+```
+
+```bash
+http://localhost:5500/html/login.html
+```

@@ -7,4 +7,4 @@ Based on this problem I developed BOOKBACK, a To-Do list website that combines t
 
 The website also includes features such as note, timer, goal-tracking system to make working and studying more engaging, less boring, and to help increase motivation and focus.
 
--- screenshot --
+<img src="screenshot/screenshot.gif" alt="Desktop Portfolio">

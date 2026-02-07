@@ -11,32 +11,33 @@ The website also includes features such as note, timer, goal-tracking system to 
 <img src="screenshot/screenshot.gif" alt="Desktop Portfolio">
 
 ## Installation With docker
-### Git clone this repo
 
+### 1.Open Docker Desktop
 ```
-Open Docker-Desktop
+Make sure Docker Desktop is running on your machine.
 ```
 
+### 2.Git clone this repo
 ```bash
 git clone https://github.com/ssrpsx/project-web-programming-I-todolist.git
 ```
 
+### 3.Move to the project directory
 ```bash
 cd project-web-programming-I-todolist
 ```
 
+### 4.build docker compose
 ```bash
 docker compose up --build
 ```
 
+### 5.waiting utill to see
 ```
-waiting utill to see 🚀 Server running on port 5500
-```
-
-```
-Open your browser and Search
+🚀 Server running on port 5500
 ```
 
+### Open the website in your browser
 ```bash
 http://localhost:5500/html/login.html
 ```

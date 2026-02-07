@@ -32,7 +32,7 @@ cd project-web-programming-I-todolist
 docker compose up --build
 ```
 
-### 5. Waiting utill to see
+### 5. Waiting utill to see this
 ```
 🚀 Server running on port 3000
 ```

@@ -27,12 +27,12 @@ git clone https://github.com/ssrpsx/project-web-programming-I-todolist.git
 cd project-web-programming-I-todolist
 ```
 
-### 4. build docker compose
+### 4. Build docker compose
 ```bash
 docker compose up --build
 ```
 
-### 5. waiting utill to see
+### 5. Waiting utill to see
 ```
 🚀 Server running on port 3000
 ```

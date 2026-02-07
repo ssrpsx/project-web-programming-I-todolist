@@ -12,32 +12,34 @@ The website also includes features such as note, timer, goal-tracking system to 
 
 ## Installation With docker
 
-### 1.Open Docker Desktop
+### 1. Open Docker Desktop
 ```
 Make sure Docker Desktop is running on your machine.
 ```
 
-### 2.Git clone this repo
+### 2. Git clone this repo
 ```bash
 git clone https://github.com/ssrpsx/project-web-programming-I-todolist.git
 ```
 
-### 3.Move to the project directory
+### 3. Move to the project directory
 ```bash
 cd project-web-programming-I-todolist
 ```
 
-### 4.build docker compose
+### 4. build docker compose
 ```bash
 docker compose up --build
 ```
 
-### 5.waiting utill to see
+### 5. waiting utill to see
 ```
-🚀 Server running on port 5500
+🚀 Server running on port 3000
 ```
 
-### Open the website in your browser
+### 6. Open the website in your browser
 ```bash
 http://localhost:5500/html/login.html
 ```
+
+---
